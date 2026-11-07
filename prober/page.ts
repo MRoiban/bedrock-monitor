@@ -10,6 +10,22 @@ const icons = {
   unk: '<circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2.6 2"/><path d="M6.3 6.2a1.8 1.8 0 1 1 2.4 1.7c-.5.2-.7.6-.7 1.1M8 11.2v.3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
   warn: '<path d="M8 1.5L15 14H1z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 6v3M8 11v.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
 };
+// Tab icons cannot read page CSS variables and sit on light or dark browser chrome, so they use
+// mid-tone colors with a white glyph, legible on both.
+const tabIcons = {
+  ok: '<circle cx="8" cy="8" r="7.5" fill="#66800b"/><path d="M4.4 8.2l2.4 2.4 4.8-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+  bad: '<path d="M4.9.5h6.2l4.4 4.4v6.2l-4.4 4.4H4.9L.5 11.1V4.9z" fill="#d14d41"/><path d="M5.4 5.4l5.2 5.2M10.6 5.4l-5.2 5.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/>',
+  warn: '<path d="M8 .8l7.6 13.7H.4z" fill="#d0a215"/><path d="M8 5.6v4M8 12.2v.1" stroke="#100f0f" stroke-width="2" stroke-linecap="round"/>',
+  unk: '<circle cx="8" cy="8" r="6.8" fill="none" stroke="#878580" stroke-width="1.8" stroke-dasharray="2.8 2"/><path d="M6.2 6.1a1.9 1.9 0 1 1 2.5 1.8c-.5.2-.7.6-.7 1.1M8 11.3v.2" stroke="#878580" stroke-width="1.7" fill="none" stroke-linecap="round"/>',
+};
+type Tone = keyof typeof tabIcons;
+export const favicon = (tone: Tone) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">${tabIcons[tone]}</svg>`)}`;
+/** The verdict at build time; site.js recomputes it as the observation ages. */
+export function tone(state: State): Tone {
+  if (!state.latest) return "unk";
+  if (activeIncident(state)) return state.latest.ok ? "warn" : "bad";
+  return state.latest.ok ? "ok" : "warn";
+}
 export const icon = (tone: keyof typeof icons) => `<svg width="26" height="26" viewBox="0 0 16 16" aria-hidden="true">${icons[tone]}</svg>`;
 export function snapshot(state: State, publishedAt: string) {
   // Construct an allowlisted public projection; never spread operational data into page assets.
@@ -55,8 +71,8 @@ export function render(state: State, rows: Daily[], now: number) {
   const resolved = state.incidents.filter((i) => i.resolved_at).slice(-10).reverse();
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Home cloud status</title><link rel="stylesheet" href="site.css"><script src="site.js" defer></script></head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'self'; script-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Home cloud status</title><link rel="icon" id="favicon" type="image/svg+xml" href="${favicon(tone(state))}"${(["ok", "bad", "warn", "unk"] as const).map((t) => ` data-${t}="${favicon(t)}"`).join("")}><link rel="stylesheet" href="site.css"><script src="site.js" defer></script></head>
 <body><main class="public">
 <header class="head"><div class="brand"><span class="brand-mark" aria-hidden="true">b</span>Home cloud status</div><span class="desc num" title="${publishedAt}">Page published ${clock(publishedAt)} UTC</span></header>
 <section class="status" data-tone="unk" aria-labelledby="verdict"><h1 id="verdict" aria-live="polite"><span class="st unk" id="status-icon">${icon("unk")}</span><span id="headline">${escape(dated)}</span></h1>

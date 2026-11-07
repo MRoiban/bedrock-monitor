@@ -5,7 +5,7 @@ import { apply, emptyState, slot, type Observation, type State } from "./model";
 import { compact, expected, readDaily, readRaw, readState, record, saveState } from "./journal";
 import { canaryUrl, probe } from "./probe";
 import { githubNotifications, notify, type Notifications } from "./notify";
-import { render, snapshot } from "./page";
+import { favicon, render, snapshot } from "./page";
 
 const origin = Date.parse("2026-11-07T12:02:00Z");
 const at = (n: number) => new Date(origin + n * 300_000).toISOString();
@@ -226,6 +226,19 @@ describe("static public page", () => {
     expect(html).not.toContain('class="day ok"');
     expect(html.match(/class="day none"/g)).toHaveLength(120);
   });
+});
+
+test("the tab icon carries the build-time verdict and every tone for the live script", () => {
+  const head = (state: State) => render(state, [], origin + 900_000).match(/<link rel="icon"[^>]*>/)![0];
+  const down = outage(), confirming = outage(), up = emptyState();
+  apply(confirming, observation(3, true));
+  apply(up, observation(0, true));
+  expect(head(emptyState())).toContain(`href="${favicon("unk")}"`);
+  expect(head(down)).toContain(`href="${favicon("bad")}"`);
+  expect(head(confirming)).toContain(`href="${favicon("warn")}"`);
+  expect(head(up)).toContain(`href="${favicon("ok")}"`);
+  for (const tone of ["ok", "bad", "warn", "unk"] as const) expect(head(up)).toContain(`data-${tone}="${favicon(tone)}"`);
+  expect(render(up, [], origin)).toContain("img-src data:");
 });
 
 test("GitHub/ntfy adapters use stable redacted bodies and reconcile only bot issues", async () => {

@@ -5,8 +5,9 @@
   const status = document.querySelector(".status");
   const symbol = document.getElementById("status-icon");
   const unknownIcon = symbol.innerHTML;
+  const tab = document.getElementById("favicon");
   function refresh() {
-    if (!data.latest) return;
+    if (!data.latest) { if (tab) tab.setAttribute("href", tab.dataset.unk); return; }
     const now = Date.now();
     const age = now - Date.parse(data.latest.observed_at);
     const clockInvalid = now < Date.parse(data.published_at) - 60_000 || age < 0;
@@ -24,6 +25,7 @@
     status.dataset.tone = tone;
     symbol.className = `st ${tone}`;
     symbol.innerHTML = tone === "unk" ? unknownIcon : document.getElementById(`icon-${tone}`).innerHTML;
+    if (tab && tab.getAttribute("href") !== tab.dataset[tone]) tab.setAttribute("href", tab.dataset[tone]);
     const checkTime = data.latest.observed_at.slice(11, 16);
     const checkDate = data.latest.observed_at.slice(0, 10);
     const timeLabel = new Date(now).toISOString().slice(0, 10) === checkDate ? `${checkTime} UTC` : `${checkDate} ${checkTime} UTC`;

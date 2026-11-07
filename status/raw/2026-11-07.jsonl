@@ -1,3 +1,4 @@
 {"scheduled_at":"2026-11-07T22:17:00.000Z","observed_at":"2026-11-07T22:20:39.872Z","ok":true,"http_status":200,"duration_ms":559}
 {"scheduled_at":"2026-11-07T22:27:00.000Z","observed_at":"2026-11-07T22:27:28.653Z","ok":false,"duration_ms":8,"error_class":"network"}
 {"scheduled_at":"2026-11-07T22:32:00.000Z","observed_at":"2026-11-07T22:32:26.612Z","ok":false,"duration_ms":33,"error_class":"network"}
+{"scheduled_at":"2026-11-07T22:37:00.000Z","observed_at":"2026-11-07T22:37:27.310Z","ok":false,"duration_ms":19,"error_class":"network"}

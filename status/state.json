@@ -32,7 +32,7 @@
       "incident_id": "2026-11-07T22:37:00.000Z",
       "kind": "recover",
       "at": "2026-11-07T22:47:27.277Z",
-      "issue": "pending",
+      "issue": "sent",
       "ntfy": "pending"
     }
   ]

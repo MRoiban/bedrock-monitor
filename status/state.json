@@ -13,7 +13,8 @@
   "incidents": [
     {
       "id": "2026-11-07T22:37:00.000Z",
-      "opened_at": "2026-11-07T22:37:27.310Z"
+      "opened_at": "2026-11-07T22:37:27.310Z",
+      "issue_number": 1
     }
   ],
   "transitions": [
@@ -22,7 +23,7 @@
       "incident_id": "2026-11-07T22:37:00.000Z",
       "kind": "open",
       "at": "2026-11-07T22:37:27.310Z",
-      "issue": "pending",
+      "issue": "sent",
       "ntfy": "pending"
     }
   ]

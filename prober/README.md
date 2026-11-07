@@ -157,7 +157,7 @@ bun install --cwd prober
 bun run --cwd prober typecheck
 bun test prober
 bun run --cwd prober build
-python3 prober/check-workflow.py
+python3 prober/check-workflow.py --remote
 # Playwright and axe resolve from PLAYWRIGHT_MODULE/AXE_MODULE (default: node_modules);
 # MONITOR_MOCKUP is the Bedrock repo's design/monitoring/mockup.html.
 MONITOR_MOCKUP=../bedrock/design/monitoring/mockup.html node prober/visual-check.mjs

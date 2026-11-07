@@ -10,30 +10,6 @@
   "last_success_at": "2026-11-07T22:47:27.277Z",
   "failures": 0,
   "successes": 2,
-  "incidents": [
-    {
-      "id": "2026-11-07T22:37:00.000Z",
-      "opened_at": "2026-11-07T22:37:27.310Z",
-      "issue_number": 1,
-      "resolved_at": "2026-11-07T22:47:27.277Z"
-    }
-  ],
-  "transitions": [
-    {
-      "id": "2026-11-07T22:37:00.000Z/open",
-      "incident_id": "2026-11-07T22:37:00.000Z",
-      "kind": "open",
-      "at": "2026-11-07T22:37:27.310Z",
-      "issue": "sent",
-      "ntfy": "sent"
-    },
-    {
-      "id": "2026-11-07T22:37:00.000Z/recover",
-      "incident_id": "2026-11-07T22:37:00.000Z",
-      "kind": "recover",
-      "at": "2026-11-07T22:47:27.277Z",
-      "issue": "sent",
-      "ntfy": "sent"
-    }
-  ]
+  "incidents": [],
+  "transitions": []
 }

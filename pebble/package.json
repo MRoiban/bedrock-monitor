@@ -1,0 +1,26 @@
+{
+  "name": "bedrock-monitor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "bun test tests/unit",
+    "dev": "bedrock dev"
+  },
+  "dependencies": {
+    "@bedrock/ui": "link:@bedrock/ui",
+    "bedrock": "link:bedrock",
+    "drizzle-orm": "0.45.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/bun": "^1.3.10",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "drizzle-kit": "^0.31.9",
+    "@playwright/test": "1.64.0",
+    "@axe-core/playwright": "4.14.0"
+  }
+}

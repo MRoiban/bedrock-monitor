@@ -1,0 +1,12 @@
+Bedrock Monitor
+
+Derived in part from Gatus (https://github.com/TwiN/gatus),
+Copyright (c) TwiN and Gatus contributors, licensed under Apache License 2.0.
+The upstream source and LICENSE are retained unchanged in this fork.
+
+Added 2026: pebble/, a Bedrock-native Bun/React adaptation of Gatus's
+endpoint/result/event/hourly-summary concepts and compact card/history visual
+language. The implementation replaces Go/Vue runtime behavior; it does not run
+Gatus or copy its alert evaluator. Monitoring layout follows the separately
+supplied Bedrock monitoring handoff and the owner's existing app-shell and
+activity-bar patterns. New/modified adaptation files are under pebble/.

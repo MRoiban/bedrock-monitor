@@ -1,0 +1,11 @@
+node_modules/
+.bedrock/
+.env*
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+# Local visual evidence includes private names from the approved mockup.
+docs/visual-check/*.png
+docs/visual-check/*.json
+docs/visual-check/index.md

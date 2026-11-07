@@ -54,7 +54,9 @@ run it.
    slots, then two successful slots. Confirm one issue opens and closes, one
    ntfy outage/recovery push each, actual owner email receipt and a working Pages
    page while home is unreachable. Do not put diagnostic/private text into the
-   public issue. This delivery/hosting drill has **not** been performed locally.
+   public issue. One way: point `BEDROCK_CANARY_URL` at `https://bedrock.drill.invalid/healthz`
+   and dispatch once per slot, then restore it; afterwards remove the drill rows from
+   `status/` so the public history shows only real observations.
 10. Optional, off by default: in Cloudflare Notifications/Zero Trust, create a
     **Tunnel Health Alert** for this tunnel to owner email. Test delivery. This
     complements the HTTP probe; connector health alone does not prove daemon

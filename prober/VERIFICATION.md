@@ -113,3 +113,13 @@ after current-tree 90-day compaction. The schedule's intended cron due time is
 not supplied by GitHub; slot identity uses original workflow creation time.
 These limits are documented rather than presented as exactly-once delivery,
 raw-data erasure, guaranteed five-minute sampling or validated external hosting.
+
+## Live setup and drill (2026-11-07)
+
+Done on the owner's fork: Actions, Pages (GitHub Actions source) and Issues enabled;
+`BEDROCK_CANARY_URL` and `NTFY_TOPIC_URL` set; first dispatch failed at job setup because
+two action pins did not exist upstream (fixed; `check-workflow.py --remote` now resolves
+pins). Drill: three failing slots 22:27/22:32/22:37 UTC opened issue #1 and sent the
+outage push (`issue: sent`, `ntfy: sent`); two passing slots 22:42/22:47 closed it and
+sent the recovery push. The drill rows were then removed from `status/`. Owner email
+and phone receipt are confirmed by the owner, not by this log.

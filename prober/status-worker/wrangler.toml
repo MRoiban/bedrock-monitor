@@ -1,0 +1,8 @@
+name = "bedrock-status"
+main = "index.ts"
+compatibility_date = "2026-10-01"
+workers_dev = false
+routes = [{ pattern = "mc2.onl", custom_domain = true }]
+
+[vars]
+SOURCE_URL = "https://www.roiban.xyz/bedrock-monitor/"

@@ -1,9 +1,15 @@
 {
   "version": 1,
-  "latest": null,
-  "last_success_at": null,
+  "latest": {
+    "scheduled_at": "2026-11-07T22:17:00.000Z",
+    "observed_at": "2026-11-07T22:20:39.872Z",
+    "ok": true,
+    "http_status": 200,
+    "duration_ms": 559
+  },
+  "last_success_at": "2026-11-07T22:20:39.872Z",
   "failures": 0,
-  "successes": 0,
+  "successes": 1,
   "incidents": [],
   "transitions": []
 }

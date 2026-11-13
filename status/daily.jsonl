@@ -4,4 +4,4 @@
 {"date":"2026-11-10","expected":288,"observed":4,"passed":4}
 {"date":"2026-11-11","expected":288,"observed":3,"passed":3}
 {"date":"2026-11-12","expected":288,"observed":4,"passed":4}
-{"date":"2026-11-13","expected":121,"observed":2,"passed":2}
+{"date":"2026-11-13","expected":212,"observed":3,"passed":3}

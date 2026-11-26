@@ -1,13 +1,13 @@
 {
   "version": 1,
   "latest": {
-    "scheduled_at": "2026-11-26T02:12:00.000Z",
-    "observed_at": "2026-11-26T02:14:27.584Z",
+    "scheduled_at": "2026-11-26T10:57:00.000Z",
+    "observed_at": "2026-11-26T11:01:55.505Z",
     "ok": true,
     "http_status": 200,
-    "duration_ms": 840
+    "duration_ms": 589
   },
-  "last_success_at": "2026-11-26T02:14:27.584Z",
+  "last_success_at": "2026-11-26T11:01:55.505Z",
   "failures": 0,
   "successes": 1,
   "incidents": [],
